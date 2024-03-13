@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:syncfusion="clr-namespace:Syncfusion.Maui.DataGrid;assembly=Syncfusion.Maui.DataGrid"
+             xmlns:local="clr-namespace:LoadMoreDemo"
+             x:Class="LoadMoreDemo.MainPage">
+
+    <ContentPage.BindingContext>
+        <local:ViewModel/>
+    </ContentPage.BindingContext>
+
+    <ContentPage.Content>
+        <syncfusion:SfDataGrid x:Name="dataGrid" 
+                             AutoGenerateColumnsMode="None"
+                             ColumnWidthMode="FitByHeader"
+                             ItemsSource="{Binding Records}"
+                             AllowLoadMore="True"
+                             IsBusy="{Binding IsBusy}"
+                             LoadMoreCommand="{Binding LoadMoreRecordsCommand}">
+            <syncfusion:SfDataGrid.Columns>
+                <syncfusion:DataGridNumericColumn  HeaderText="ID"
+                                                 Format="D"
+                                 MappingName="[OrderID]" />
+                <syncfusion:DataGridTextColumn  HeaderText="Customer ID"
+                                 MappingName="[CustomerID]" />
+                <syncfusion:DataGridTextColumn  HeaderText="City"
+                                 MappingName="[ShipCity]" />
+                <syncfusion:DataGridTextColumn  HeaderText="Country"
+                                 MappingName="[ShipCountry]" />
+                <syncfusion:DataGridDateColumn  HeaderText="Order Date"
+                        MappingName="[OrderDate]" />
+                <syncfusion:DataGridNumericColumn  HeaderText="Freight"
+                                 MappingName="[Freight]" Format="C"/>
+            </syncfusion:SfDataGrid.Columns>
+        </syncfusion:SfDataGrid>
+    </ContentPage.Content>
+
+</ContentPage>
